@@ -5,7 +5,7 @@ import Movie from "./components/movieList/Movie";
 
 import "./App.css";
 import NewMovie from "./components/addMovie/NewMovie";
-import HeartCheckBox from "./components/HeartChekBox/HeartChekBox";
+import HeartCheckBox from "./components/HeartChekBox/HeartCheckBox";
 // import { c } from "vite/dist/node/types.d-aGj9QkWt";
 
 class NewArrMovie extends Component {
@@ -43,7 +43,7 @@ class NewArrMovie extends Component {
         <h2>
           <Header movieInfo={movieInfo} />
           <Search />
-          <HeartCheckBox />
+          {/* <HeartCheckBox /> */}
           <Movie deleteButton={this.deleteButton} data={this.state.data} />
           <NewMovie addMovie={this.addMovie} />
         </h2>

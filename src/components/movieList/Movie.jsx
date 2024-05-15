@@ -1,5 +1,5 @@
 import React from "react";
-import HeartChekBox from "../HeartChekBox/HeartChekBox";
+import HeartChekBox from "../HeartChekBox/HeartCheckBox";
 import "./Movie.css";
 
 function Movie({ data, deleteButton }) {
