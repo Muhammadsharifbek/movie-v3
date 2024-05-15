@@ -1,0 +1,14 @@
+.movie-wrapper {
+  width: 600px;
+  background-color: rgb(249, 252, 255);
+  border-radius: 10px;
+  color: rgb(15, 15, 15);
+  box-shadow: 10px 20px 60px 4px;
+  font-size: 15px;
+  margin-bottom: 90px;
+  margin-left: 25px;
+}
+
+/* .all-movies {
+  color: rgb(15, 15, 15);
+} */

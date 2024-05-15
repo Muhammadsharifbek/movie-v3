@@ -1,0 +1,55 @@
+.search {
+  background-color: white;
+  width: 600px;
+  height: 50px;
+  box-shadow: 10px 20px 60px 4px;
+  margin-bottom: 50px;
+}
+
+/* .button1 {
+  width: 240px;
+  font-weight: 100; */
+.button {
+  border-style: none;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  background-color: #363536;
+  margin-bottom: 90px;
+}
+
+.button1 {
+  border-radius: 8px 0px 0px 5px;
+}
+
+.button:hover,
+.button:focus {
+  opacity: 4;
+  background-color: #f082ac;
+}
+
+.button2 {
+  border-radius: 0px 0px 0px 0px;
+}
+
+.button3 {
+  border-radius: 0px 5px 5px 0px;
+}
