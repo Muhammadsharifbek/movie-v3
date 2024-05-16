@@ -5,7 +5,6 @@ import Movie from "./components/movieList/Movie";
 
 import "./App.css";
 import NewMovie from "./components/addMovie/NewMovie";
-import StarCheckBox from "./components/HeartChekBox/HeartCheckBox";
 import FilterMovie from "./components/FilterMovie/FilterMovie";
 
 class NewArrMovie extends Component {
