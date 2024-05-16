@@ -1,5 +1,5 @@
 import React from "react";
-import HeartChekBox from "../HeartChekBox/HeartCheckBox";
+import StarCheckBox from "../HeartChekBox/HeartCheckBox";
 import "./Movie.css";
 
 function Movie({ data, deleteButton }) {
@@ -20,7 +20,7 @@ function Movie({ data, deleteButton }) {
 
               <button onClick={() => deleteButton(movie.id)}>Delete </button>
               <p className="Likes">
-                <HeartChekBox />{" "}
+                <StarCheckBox />
               </p>
             </nav>
           );
