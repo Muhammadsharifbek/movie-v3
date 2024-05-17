@@ -17,6 +17,7 @@ class NewArrMovie extends Component {
         { title: "Dune", viewers: 69000, id: 3 },
       ],
       term: "",
+      filter: "",
     };
   }
   deleteButton = (id) => {
@@ -41,12 +42,23 @@ class NewArrMovie extends Component {
     return arr.filter((movie) => movie.title.toLowerCase().indexOf(term.toLowerCase()) > -1);
   };
 
+  updateFilter = (arr, filter) => {
+    switch (filter) {
+      case "mostViewer":
+        return arr.filter((c) => c.viewers > 90300);
+
+      default:
+        return arr;
+    }
+  };
+
   updateTermInput = (term) => this.setState({ term });
+  updateFilterInput = (filter) => this.setState({ filter });
 
   render() {
-    const { data, term } = this.state;
+    const { data, term, filter } = this.state;
     const movieInfo = data.length;
-    const searchInput = this.handleSearch(data, term);
+    const searchInput = this.updateFilter(this.handleSearch(data, term), filter);
     return (
       <div>
         <h2>
@@ -54,7 +66,7 @@ class NewArrMovie extends Component {
           <Header movieInfo={movieInfo} />
 
           <Search updateTermInput={this.updateTermInput} />
-          <FilterMovie />
+          <FilterMovie filter={filter} updateFilterInput={this.updateFilterInput} />
 
           <Movie deleteButton={this.deleteButton} data={searchInput} />
           <NewMovie addMovie={this.addMovie} />

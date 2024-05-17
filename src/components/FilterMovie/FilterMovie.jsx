@@ -1,32 +1,31 @@
-import { useState } from "react";
 import "./FilterMovie.css";
 
-function FilterMovie() {
-  const [activeButton, setActiveButton] = useState(null);
-
-  const handleButtonClick = (buttonName) => {
-    setActiveButton(buttonName);
-  };
+function FilterMovie({ updateFilterInput, filter }) {
+  const btnArr = [
+    { name: "All", label: "Barcha kinolar" },
+    { name: "mostViewer", label: "Eng Ko'p ko'rilgan kinolar" },
+    // { name: "", label: "Mashhur Kinolar" },
+  ];
 
   return (
     <div>
-      <button className="button1 button " style={{ backgroundColor: activeButton === "button1" ? "crimson" : "" }} onClick={() => handleButtonClick("button1")}>
-        Barcha Kinolar
-      </button>
-      <button className="button2 button " style={{ backgroundColor: activeButton === "button2" ? "crimson" : "" }} onClick={() => handleButtonClick("button2")}>
-        Mashhur Kinolar
-      </button>
-      <button className="button3 button " style={{ backgroundColor: activeButton === "button3" ? "crimson" : "" }} onClick={() => handleButtonClick("button3")}>
+      {btnArr.map((btnFilter) => (
+        <button
+          key={btnFilter.name}
+          updateFilterInput={updateFilterInput}
+          className={`btn ${filter === btnFilter.name ? "btn-dark" : "btn-dark"}`}
+          onClick={() => updateFilterInput(btnFilter.name)}
+          type="button"
+        >
+          {btnFilter.label}
+        </button>
+      ))}
+
+      {/* <button className="button3 button " style={{ backgroundColor: activeButton === "button3" ? "crimson" : "" }} onClick={() => handleButtonClick("button3")}>
         Eng Ko'p ko'rilgan kinolar
-      </button>
-      <style>
-        {`
-          button.active {
-            background-color: crimson;
-          }
-        `}
-      </style>
+      </button> */}
     </div>
   );
 }
+
 export default FilterMovie;
