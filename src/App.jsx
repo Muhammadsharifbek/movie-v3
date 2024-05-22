@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Header from "./components/header/Header";
 import Search from "./components/search/Search";
@@ -10,9 +10,9 @@ import FilterMovie from "./components/FilterMovie/FilterMovie";
 
 const App = () => {
   const [data, setData] = useState([
-    { title: "Interstellar", viewers: 10000, id: 1 },
-    { title: "Fight club", viewers: 40000, id: 2 },
-    { title: "Dune", viewers: 69000, id: 3 },
+    // { title: "Interstellar", viewers: 10000, id: 1 },
+    // { title: "Fight club", viewers: 40000, id: 2 },
+    // { title: "Dune", viewers: 69000, id: 3 },
   ]);
   const [term, setTerm] = useState("");
   const [filter, setFilter] = useState("all");
@@ -27,6 +27,20 @@ const App = () => {
     const newArr = data.filter((movie) => movie.id !== id);
     setData(newArr);
   };
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/posts?_limit=10")
+      .then((responce) => responce.json())
+      .then((json) => {
+        const newArr = json.map((movie) => ({
+          title: movie.title,
+          id: uuidv4(),
+          viewers: movie.id * 10,
+        }));
+        setData(newArr);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   const handleSearch = (arr, term) => {
     if (term.length === 0) {
