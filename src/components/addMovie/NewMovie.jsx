@@ -1,50 +1,41 @@
-import { Component } from "react";
+import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "./NewMovie.css";
 
-class NewMovie extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      title: "",
-      viewers: null,
-    };
-  }
+const NewMovie = ({ addMovie }) => {
+  const [state, setState] = useState({ title: "", viewers: "" });
 
-  handleSubmit = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
+  const handleSubmit = (e) => {
+    setState({ ...state, [e.target.name]: e.target.value });
   };
 
-  addFormHandler = (e) => {
+  const addFormHandler = (e) => {
     e.preventDefault();
-    this.props.addMovie({ title: this.state.title, viewers: this.state.viewers, id: uuidv4() });
-    this.setState({
+    const data = { title: state.title, viewers: state.viewers, id: uuidv4() };
+    addMovie(data);
+
+    setState({
       title: "",
       viewers: "",
     });
   };
 
-  render() {
-    const { title, viewers } = this.state;
-    return (
-      <div>
-        <form onSubmit={this.addFormHandler}>
-          <span>Yangi Kino Qo'shish:</span>
-          <label className="movie-adder">
-            <input type="text" placeholder="movie" name="title" value={title} onChange={this.handleSubmit} required />
-          </label>
+  return (
+    <div>
+      <form onSubmit={addFormHandler}>
+        <span>Yangi Kino Qo'shish:</span>
+        <label className="movie-adder">
+          <input type="text" placeholder="movie" name="title" value={state.title} onChange={handleSubmit} required />
+        </label>
 
-          <label className="movie-viewer">
-            <input type="number" name="viewers" value={viewers} onChange={this.handleSubmit} required />
-          </label>
-          <button className="button">Add Movie</button>
-        </form>
-      </div>
-    );
-  }
-}
+        <label className="movie-viewer">
+          <input type="number" name="viewers" value={state.viewers} onChange={handleSubmit} required />
+        </label>
+        <button className="button">Add Movie</button>
+      </form>
+    </div>
+  );
+};
 
 // function NewMovie({ addMovie }) {
 //   const [movie, setMovie] = useState({

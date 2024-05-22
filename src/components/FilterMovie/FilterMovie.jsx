@@ -1,29 +1,28 @@
 import "./FilterMovie.css";
 
-function FilterMovie({ updateFilterInput, filter }) {
+function FilterMovie({ updateFilterInput, filter, visibleCount }) {
   const btnArr = [
-    { name: "All", label: "Barcha kinolar" },
-    { name: "mostViewer", label: "Eng Ko'p ko'rilgan kinolar" },
-    // { name: "", label: "Mashhur Kinolar" },
+    { name: "All", label: "Barcha kinolar", id: 1 },
+    { name: "mostViewer", label: "Eng Ko'p ko'rilgan kinolar", id: 2 },
+    { name: "", label: "Mashhur Kinolar", id: 3 },
   ];
 
+  // const xz = btnArr.filter((btnFilter) => filter === "All" || filter === btnFilter.name || filter === "").length;
   return (
     <div>
       {btnArr.map((btnFilter) => (
         <button
           key={btnFilter.name}
-          updateFilterInput={updateFilterInput}
-          className={`btn ${filter === btnFilter.name ? "btn-dark" : "btn-dark"}`}
+          className={`btn ${filter === btnFilter.name ? "btn-dark" : "btn-outline-dark"}`}
           onClick={() => updateFilterInput(btnFilter.name)}
           type="button"
         >
           {btnFilter.label}
         </button>
       ))}
-
-      {/* <button className="button3 button " style={{ backgroundColor: activeButton === "button3" ? "crimson" : "" }} onClick={() => handleButtonClick("button3")}>
-        Eng Ko'p ko'rilgan kinolar
-      </button> */}
+      <h3> {visibleCount > 0 ? `You're content number: ${visibleCount}` : "No content yet :("}</h3>
+      {/* <h2>{visibleCount}</h2> */}
+  
     </div>
   );
 }
